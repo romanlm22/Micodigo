@@ -1,26 +1,41 @@
 {
-  "name": "forum-api-jwt",
+  "name": "alura-api-rest",
   "version": "1.0.0",
-  "description": "API REST de foro con Express, Prisma (SQLite) y JWT",
+  "description": "API REST con Express, Prisma, JWT y bcrypt para foro",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/server.js",
+    "dev": "nodemon --watch src src/server.js",
     "start": "node src/server.js",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev --name init",
-    "db:seed": "node prisma/seed.js"
+    "prisma:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.mjs"
   },
+  "keywords": [
+    "express",
+    "prisma",
+    "jwt",
+    "bcrypt",
+    "api",
+    "foro"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.22.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "prisma": "^5.14.0"
+    "nodemon": "^3.1.4",
+    "prisma": "^5.22.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
   }
 }
