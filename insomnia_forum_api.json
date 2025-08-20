@@ -1,0 +1,100 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-19T00:00:00.000Z",
+  "__export_source": "chatgpt-forum-api",
+  "resources": [
+    {
+      "_id": "wrk_forum_api",
+      "_type": "workspace",
+      "name": "Foro API JWT",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_forum_api",
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:8080",
+        "token": ""
+      }
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "wrk_forum_api",
+      "name": "Autenticación",
+      "method": "POST",
+      "url": "{{ _.baseUrl }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"user@example.com\", \"password\": \"password123\"}"
+      }
+    },
+    {
+      "_id": "req_listar",
+      "_type": "request",
+      "parentId": "wrk_forum_api",
+      "name": "Listar Tópicos",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/topicos",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_crear",
+      "_type": "request",
+      "parentId": "wrk_forum_api",
+      "name": "Registrar Tópico",
+      "method": "POST",
+      "url": "{{ _.baseUrl }}/topicos",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"titulo\": \"Error validación HTTP\", \"mensaje\": \"Error al ejecutar una requisición\", \"nombreCurso\": \"HTTP en la web\"}"
+      }
+    },
+    {
+      "_id": "req_actualizar",
+      "_type": "request",
+      "parentId": "wrk_forum_api",
+      "name": "Actualizar Tópico",
+      "method": "PUT",
+      "url": "{{ _.baseUrl }}/topicos/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"titulo\": \"Actualizado: Error validación HTTP\"}"
+      }
+    },
+    {
+      "_id": "req_eliminar",
+      "_type": "request",
+      "parentId": "wrk_forum_api",
+      "name": "Eliminar Tópico",
+      "method": "DELETE",
+      "url": "{{ _.baseUrl }}/topicos/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ]
+    }
+  ]
+}
